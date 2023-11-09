@@ -12,7 +12,6 @@ def get_feature_descs(orig_feat_names, feature_desc_map):
     return feature_desc
 
 
-
 def print_tree_path(example, tree, feat_names, df_orig, cat_columns):
     left_child = tree.children_left
     right_child = tree.children_right

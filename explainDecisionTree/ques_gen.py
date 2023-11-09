@@ -1,5 +1,3 @@
-# Commonly used functions
-
 import random
 
 
