@@ -1,0 +1,6 @@
+python-dotenv
+ipykernel
+pandas
+scikit-learn
+matplotlib
+openai==0.28
