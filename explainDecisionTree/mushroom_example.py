@@ -44,14 +44,14 @@ feature_desc_map = {
 }
 
 tree_data = {
-    'X_test': X_test,
-    'y_test': y_test,
-    'clf': clf,
-    'orig_feature_names': orig_feature_names,
-    'cat_columns': cat_columns,
-    'df_orig': dataset,
-    'feature_desc_map': feature_desc_map,
-    'df_index': 5
+    'test_features': X_test,
+    'test_labels': y_test,
+    'classifier': clf,
+    'feature_names': orig_feature_names,
+    'categorical_columns': cat_columns,
+    'original_data': dataset,
+    'feature_description': feature_desc_map,
+    'data_index': 5
 }
 
 generate_rule_based_decision_tree_explanation(tree_data)

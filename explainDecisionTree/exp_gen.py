@@ -7,9 +7,11 @@ load_dotenv(find_dotenv())
 
 
 def get_feature_descs(orig_feat_names, feature_desc_map):
-    feature_desc = [f'{feature} represents the {feature_desc_map[feature]}' for feature in orig_feat_names if feature in feature_desc_map]
-    feature_desc = ',\n'.join(feature_desc)
-    return feature_desc
+    if feature_desc_map:
+        feature_desc = [f'{feature} represents the {feature_desc_map.get(feature, feature)}' for feature in orig_feat_names]
+    else:
+        feature_desc = [f'{feature}' for feature in orig_feat_names]
+    return ',\n'.join(feature_desc)
 
 
 def print_tree_path(example, tree, feat_names, df_orig, cat_columns):
@@ -59,24 +61,20 @@ def get_hydrated_prompt(example, orig_feat_names, feat_names, clf, df_orig, cat_
     feature_desc = get_feature_descs(orig_feat_names, feature_desc_map)
     tree_text = export_text(clf, feature_names=feat_names)
     path_str, relevant_feature_str = print_tree_path(example, clf.tree_, feat_names, df_orig, cat_columns)
-
-    prompt = f"""Suppose a dataset for network intrusion detection has the following features:
-    {feature_desc}
-
-    The labels are {' and '.join(labels)}.
-
-    The following decision tree was build using the above features:
-    {tree_text}
-
-    A new test example has the following relevant features:
-    {relevant_feature_str}
-
-    The new test example took the following path through the tree:
-    {path_str}
-
-    Using inferred background knowledge of the features and network traffic, explain in simple terms why the decision tree came to the conclusion that the given example is {label}.
-    Do not refer to the underlying mechanics of the decision tree in any way, and only refer to the features using natural language. Please refer to the feature values in context using parenthesis.
-    """
+    prompt = (
+        "Suppose a dataset for network intrusion detection has the following features:\n"
+        f"{feature_desc}\n\n"
+        f"The labels are {' and '.join(labels)}.\n\n"
+        "The following decision tree was build using the above features:\n"
+        f"{tree_text}\n\n"
+        "A new test example has the following relevant features:\n"
+        f"{relevant_feature_str}\n\n"
+        "The new test example took the following path through the tree:\n"
+        f"{path_str}\n\n"
+        "Using inferred background knowledge of the features and network traffic, explain in simple terms why the decision tree came to the conclusion that the given example is "
+        f"{label}.\n"
+        "Do not refer to the underlying mechanics of the decision tree in any way, and only refer to the features using natural language. Please refer to the feature values in context using parenthesis."
+    )
     return prompt
 
 
@@ -95,19 +93,16 @@ def generate_llm_explanation(example, original_feat_names, feat_names, clf, df_o
     return completion.choices[0].message.content
 
 
-def generate_rulebased_explanation(example, original_feat_names, feat_names, clf, df_orig, cat_columns, labels, feature_desc_map, prompt_id='a'):
+def generate_rulebased_explanation(example, original_feat_names, feat_names, clf, df_orig, cat_columns, labels, feature_desc_map):
     feature_desc = get_feature_descs(original_feat_names, feature_desc_map)
     path_str, relevant_feature_str = print_tree_path(example, clf.tree_, feat_names, df_orig, cat_columns)
-
-    prompt = f"""Suppose a dataset for network intrusion detection has the following features:
-    {feature_desc}
-
-    The labels are {' and '.join(labels)}.
-
-    A new test example has the following relevant features:
-    {relevant_feature_str}
-
-    The new test example took the following path through the tree:
-    {path_str}
-    """
+    prompt = (
+        f"Suppose a dataset for network intrusion detection has the following features:\n"
+        f"{feature_desc}\n\n"
+        f"The labels are {' and '.join(labels)}.\n\n"
+        f"A new test example has the following relevant features:\n"
+        f"({relevant_feature_str})\n\n"
+        f"The new test example took the following path through the tree:\n"
+        f"{path_str}"
+    )
     return prompt

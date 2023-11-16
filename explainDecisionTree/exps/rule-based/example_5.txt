@@ -1,5 +1,6 @@
 Suppose a dataset for network intrusion detection has the following features:
-    cap-shape represents the the shape of the mushroom cap (e.g., bell, conical, convex, flat, knobbed, sunken),
+class represents the class,
+cap-shape represents the the shape of the mushroom cap (e.g., bell, conical, convex, flat, knobbed, sunken),
 cap-surface represents the the texture of the mushroom cap surface (e.g., fibrous, grooves, scaly, smooth),
 cap-color represents the the color of the mushroom cap (e.g., brown, pink, white, red, buff, purple, cinnamon, green),
 bruises represents the presence of bruises on the mushroom (e.g., bruises or no bruises),
@@ -22,22 +23,21 @@ spore-print-color represents the the color of the mushroom spore print (e.g., bl
 population represents the the population distribution of the mushroom (e.g., abundant, clustered, numerous, scattered, several, solitary),
 habitat represents the the habitat where the mushroom grows (e.g., grasses, leaves, meadows, paths, urban, waste, woods)
 
-    The labels are edible and poisonous.
+The labels are edible and poisonous.
 
-    A new test example has the following relevant features:
-    odor = y
+A new test example has the following relevant features:
+(odor = y
 stalk-root = ?
 stalk-surface-below-ring = s
 odor = y
+)
 
-
-    The new test example took the following path through the tree:
-    Step 1: Feature odor_n <= 0.50 -> LEFT
+The new test example took the following path through the tree:
+Step 1: Feature odor_n <= 0.50 -> LEFT
 Step 2: Feature stalk-root_c <= 0.50 -> LEFT
 Step 3: Feature stalk-surface-below-ring_y <= 0.50 -> LEFT
 Step 4: Feature odor_a <= 0.50 -> LEFT
 
-    
 
 
 If odor had been different, would the outcome have been the same?
@@ -55,6 +55,6 @@ False
 Was class considered?
 False
 
-Was stalk-surface-below-ring considered?
-True
+Was cap-surface considered?
+False
 
