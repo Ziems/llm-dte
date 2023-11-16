@@ -55,6 +55,6 @@ False
 Was class considered?
 False
 
-Was stalk-surface-below-ring considered?
-True
+Was veil-color considered?
+False
 

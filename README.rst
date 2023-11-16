@@ -15,26 +15,7 @@ The rule-based method focuses on creating explanations through a traversal of th
 
 LLM-Based Decision Tree Explanations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The LLM-based approach leverages large language models to generate explanations. It involves translating key information from the decision path of the tree into a text prompt, which is then fed into an LLM. The LLM processes this prompt to produce a natural language explanation. This method aims to provide a more comprehensive narrative by incorporating a broader range of contextual information and insights into the tree's decision-making process.
-
-Virtual Environment and API Key Configuration
----------------------------------------------
-
-Virtual Environment Requirement
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The LLM-based decision tree explanations must be run within a virtual environment. This is necessary for the correct loading of environment variables from a `.env` file. The package's ability to locate and read the `.env` file depends on its installation path, which differs between a global installation and one within a virtual environment.
-
-API Key Setup
-^^^^^^^^^^^^^
-An OpenAI API key is required for the LLM-based explanations. This key needs to be stored in a `.env` file in your project's root directory. Follow these steps to set it up:
-
-1. Create a `.env` File: In your project's root directory, create a `.env` file.
-
-2. Include the OpenAI API Key: In the `.env` file, add your OpenAI API key as follows::
-
-    API_KEY=your_openai_api_key_here
-
-   Replace `your_openai_api_key_here` with your actual OpenAI API key.
+The LLM-based approach leverages large language models to generate explanations. It involves translating key information from the decision path of the tree into a text prompt, which is then fed into an LLM. The LLM processes this prompt to produce a natural language explanation. This method aims to provide a more comprehensive narrative by incorporating a broader range of contextual information and insights into the tree's decision-making process. For this feature to work, the user must set up the `OPENAI_API_KEY` environmental variable.
 
 How to Use
 ----------

@@ -1,9 +1,6 @@
 import openai
 from sklearn.tree import export_text
 import os
-from dotenv import load_dotenv, find_dotenv
-
-load_dotenv(find_dotenv())
 
 
 def get_feature_descs(orig_feat_names, feature_desc_map):
@@ -80,10 +77,10 @@ def get_hydrated_prompt(example, orig_feat_names, feat_names, clf, df_orig, cat_
 
 def generate_llm_explanation(example, original_feat_names, feat_names, clf, df_orig, cat_columns, label, labels, feature_desc_map, prompt_id='a'):
     prompt = get_hydrated_prompt(example, original_feat_names, feat_names, clf, df_orig, cat_columns, label, labels, feature_desc_map, prompt_id=prompt_id)
-    api_key = os.getenv('API_KEY')
+    api_key = os.environ.get('OPENAI_API_KEY')
     openai.api_key = api_key
 
-    completion = openai.ChatCompletion.create(
+    completion = openai.chat.completions.create(
         model="gpt-4",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},

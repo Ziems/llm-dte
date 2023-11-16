@@ -1,4 +1,4 @@
 python-dotenv
 pandas
 scikit-learn
-openai==0.28
+openai
