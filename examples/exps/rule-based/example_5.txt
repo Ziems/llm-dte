@@ -1,0 +1,60 @@
+Suppose a dataset for network intrusion detection has the following features:
+class represents the class,
+cap-shape represents the the shape of the mushroom cap (e.g., bell, conical, convex, flat, knobbed, sunken),
+cap-surface represents the the texture of the mushroom cap surface (e.g., fibrous, grooves, scaly, smooth),
+cap-color represents the the color of the mushroom cap (e.g., brown, pink, white, red, buff, purple, cinnamon, green),
+bruises represents the presence of bruises on the mushroom (e.g., bruises or no bruises),
+odor represents the the smell of the mushroom (e.g., almond, anise, creosote, fishy, foul, musty, none, pungent, spicy),
+gill-attachment represents the how the gills are attached to the stem (e.g., attached, descending, free, notched),
+gill-spacing represents the spacing between the gills (e.g., close, crowded, distant),
+gill-size represents the the size of the gills (e.g., broad, narrow),
+gill-color represents the the color of the gills (e.g., black, brown, buff, chocolate, gray, green, orange, pink, purple, red, white, yellow),
+stalk-shape represents the the shape of the stalk (e.g., enlarging, tapering),
+stalk-root represents the the root of the stalk (e.g., bulbous, club, cup, equal, rhizomorphs, rooted, missing),
+stalk-surface-above-ring represents the the texture of the stalk surface above the ring (e.g., fibrous, scaly, silky, smooth),
+stalk-surface-below-ring represents the the texture of the stalk surface below the ring (e.g., fibrous, scaly, silky, smooth),
+stalk-color-above-ring represents the the color of the stalk above the ring (e.g., brown, buff, cinnamon, gray, orange, pink, red, white, yellow),
+stalk-color-below-ring represents the the color of the stalk below the ring (e.g., brown, buff, cinnamon, gray, orange, pink, red, white, yellow),
+veil-type represents the the type of veil (e.g., partial, universal),
+veil-color represents the the color of the veil (e.g., brown, orange, white, yellow),
+ring-number represents the the number of rings on the stalk (e.g., none, one, two),
+ring-type represents the the type of ring (e.g., cobwebby, evanescent, flaring, large, none, pendant, sheathing, zone),
+spore-print-color represents the the color of the mushroom spore print (e.g., black, brown, buff, chocolate, green, orange, purple, white, yellow),
+population represents the the population distribution of the mushroom (e.g., abundant, clustered, numerous, scattered, several, solitary),
+habitat represents the the habitat where the mushroom grows (e.g., grasses, leaves, meadows, paths, urban, waste, woods)
+
+The labels are edible and poisonous.
+
+A new test example has the following relevant features:
+(odor = y
+stalk-root = ?
+stalk-surface-below-ring = s
+odor = y
+)
+
+The new test example took the following path through the tree:
+Step 1: Feature odor_n <= 0.50 -> LEFT
+Step 2: Feature stalk-root_c <= 0.50 -> LEFT
+Step 3: Feature stalk-surface-below-ring_y <= 0.50 -> LEFT
+Step 4: Feature odor_a <= 0.50 -> LEFT
+
+
+
+If odor had been different, would the outcome have been the same?
+False
+
+If odor had been different, would the outcome have been the same?
+False
+
+If stalk-root had been different, would the outcome have been the same?
+False
+
+If stalk-surface-below-ring had been different, would the outcome have been the same?
+False
+
+Was class considered?
+False
+
+Was stalk-surface-below-ring considered?
+True
+
