@@ -48,7 +48,7 @@ def _process_decision_tree_examples(tree_data, use_llm):
     example = X_test.iloc[index]
     feature_names = X_test.columns.values
     label = y_test.iloc[index]
-    labels = y_test.unique()
+    labels = map(str, y_test.unique())
 
     if use_llm:
         explanation = generate_llm_explanation(

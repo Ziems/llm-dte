@@ -116,15 +116,16 @@ def _generate_questions(feature_values, feature_ranges, feature_names, cat_colum
             qset = generate_continuous_questions(orig_feature_name, feature_values[i], min_val, max_val)
         questions.extend(qset)
     # add question about whether a random continuous feature was considered
-    cont_feat = random.choice([f for f in orig_feature_names if f not in cat_columns])
-    cat_feat = random.choice(cat_columns)
-    for feat in [cont_feat, cat_feat]:
-        questions.append(
-            {
-                'q': f"Was {feat} considered?",
-                'a': feat in considered_feature_names,
-            }
-        )
+    if cat_columns:
+        cont_feat = random.choice([f for f in orig_feature_names if f not in cat_columns])
+        cat_feat = random.choice(cat_columns)
+        for feat in [cont_feat, cat_feat]:
+            questions.append(
+                {
+                    'q': f"Was {feat} considered?",
+                    'a': feat in considered_feature_names,
+                }
+            )
     return questions
 
 

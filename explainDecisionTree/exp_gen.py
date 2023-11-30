@@ -50,10 +50,10 @@ def print_tree_path(example, tree, feat_names, df_orig, cat_columns):
     for feature in relevant_features:
         relevant_feature_str += f"{feature['name']} = {feature['value']}" + '\n'
 
-    return path_str, relevant_feature_str
+    return path_str, relevant_feature_str.rstrip()
 
 
-def get_hydrated_prompt(example, orig_feat_names, feat_names, clf, df_orig, cat_columns, label, labels, feature_desc_map, prompt_id='a'):
+def get_hydrated_prompt(example, orig_feat_names, feat_names, clf, df_orig, cat_columns, label, labels, feature_desc_map):
 
     feature_desc = get_feature_descs(orig_feat_names, feature_desc_map)
     tree_text = export_text(clf, feature_names=feat_names)
