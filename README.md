@@ -1,4 +1,4 @@
-# Explain Tree Model Decisions with Large Language Models
+# Explaining Tree Model Decisions with Large Language Models
 [https://arxiv.org/abs/2310.19658](https://arxiv.org/abs/2310.19658)
 
 ## Overview
