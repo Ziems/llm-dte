@@ -1,4 +1,5 @@
-# Explain Decision Tree
+# Explain Tree Model Decisions with Large Language Models
+[https://arxiv.org/abs/2310.19658](https://arxiv.org/abs/2310.19658)
 
 ## Overview
 The Explain Decision Tree Package is a Python package designed to provide natural language explanations of predictions made by decision trees. This tool is useful for interpreting complex decision tree mechanisms, translating them into a format that is easier to understand for a wide range of users.
@@ -60,6 +61,19 @@ Note that `prefix_path` is an optional parameter in both functions that allows y
 ## Conclusion
 
 Overall, the Explain Decision Tree package enhances the interpretability of decision trees, offering both rule-based and LLM-based explanations.
+
+# Citation
+
+Please consider citing this work if you found this code useful!
+
+```
+@article{ziems2023explaining,
+  title={Explaining Tree Model Decisions in Natural Language for Network Intrusion Detection},
+  author={Ziems, Noah and Liu, Gang and Flanagan, John and Jiang, Meng},
+  journal={arXiv preprint arXiv:2310.19658},
+  year={2023}
+}
+```
 
 
 
